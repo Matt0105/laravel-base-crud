@@ -18,6 +18,7 @@
                     <p>Artists:<br> {{ $comic->artists }}</p> <br>
                     <p>Authors:<br> {{ $comic->authors }}</p> <br>
                     <h2>{{ $comic->price }} &euro;<br></h2>
+                    <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="{{route("comics.index")}}">Index Page</a></button>
                 </div>
             </div>
         </div>

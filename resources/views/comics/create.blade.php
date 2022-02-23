@@ -44,6 +44,7 @@
                         
                         <button type="submit" class="btn btn-primary">save</button>
                       </form>
+                      <a style="color: white; text-decoration: none" href="{{route("comics.index")}}"><button class="btn btn-primary">Index Page</button></a>
                 </div>
             </div>
         </div>

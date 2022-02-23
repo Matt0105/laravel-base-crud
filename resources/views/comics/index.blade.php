@@ -36,7 +36,11 @@
 
             @endforeach
           </table>
-          <div style="width: 100%; display: flex; justify-content: center">{{$comics->links()}}</div>
+          <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center">
+            {{$comics->links()}}
+            <a href="{{route("comics.create")}}"><button class="btn btn-dark mb-3">Add Comic</button></a>
+          </div>
+          
     </div>
 </main>
 

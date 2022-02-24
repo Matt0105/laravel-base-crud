@@ -1,4 +1,4 @@
-@extends('layouts.base');
+@extends('layouts.base')
 
 @section('title')
     {{ $title }}
@@ -7,7 +7,7 @@
 @section('content')
 <main>
     <div class="container">
-        <table class="table table-primary">
+        <table class="table table-light">
             <thead>
               <tr>
                 <th scope="col">#</th>

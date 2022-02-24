@@ -30,7 +30,10 @@
                         <td>{{$comic->editor}}</td>
                         <td>{{$comic->price}}&euro;</td>
                         <td style="width: 30px"><img class="img-fluid" src="{{$comic->thumb}}" alt="{{$comic->name}}"></td>
-                        <td><a href="{{route("comics.show", $comic)}}"><button class="btn btn-primary">More Info</button></a></td>
+                        <td>
+                          <a class="btn btn-primary" href="{{route("comics.show", $comic)}}">More Info</a>
+                          <a class="btn btn-success" href="{{route("comics.edit", $comic)}}">Edit</a>
+                        </td>
                     </tr>
                 </tbody>
 

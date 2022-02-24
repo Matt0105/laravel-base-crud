@@ -49,7 +49,11 @@ class ComicController extends Controller
         $newComic->price = $newData["price"];
         $newComic->thumb = $newData["thumb"];
 
-        $newComic->save();
+        $saved = $newComic->save();
+
+        if(!$saved) {
+            dd("Errore nel salvataggio");
+        }
 
         return redirect()->route("comics.show", $newComic);
     }
@@ -74,7 +78,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view("comics.edit", compact("comic"));
     }
 
     /**
@@ -86,7 +90,23 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $updateData = $request;
+
+        $comic->name = $request["name"];
+        $comic->brand = $request["brand"];
+        $comic->editor = $request["editor"];
+        $comic->artists = $request["artists"];
+        $comic->authors = $request["authors"];
+        $comic->price = $request["price"];
+        $comic->thumb = $request["thumb"];
+
+        $saved = $comic->save();
+
+        if(!$saved) {
+            dd("Errore nell'aggiornamento");
+        }
+
+        return redirect()->route("comics.show", compact("comic"));
     }
 
     /**

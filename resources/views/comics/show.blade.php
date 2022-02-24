@@ -18,6 +18,7 @@
                     <p>Artists:<br> {{ $comic->artists }}</p> <br>
                     <p>Authors:<br> {{ $comic->authors }}</p> <br>
                     <h2>{{ $comic->price }} &euro;<br></h2>
+                    <a style="color: white; text-decoration: none" href="{{route("comics.edit", $comic)}}"><button class="btn btn-primary">Edit</button></a>
                     <a style="color: white; text-decoration: none" href="{{route("comics.index")}}"><button class="btn btn-primary">Index Page</button></a>
                 </div>
             </div>

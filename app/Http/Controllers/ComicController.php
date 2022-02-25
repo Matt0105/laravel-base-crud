@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+
+    protected $validatingItems = [
+        'name' => "required|max:255",
+        'brand' => "required|max:100",
+        'editor' => "required|max:100",
+        'artists' => "required",
+        'authors' => "required",
+        'price' => "required",
+        'thumb' => "required",
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +49,9 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validateData = $request->validate($this->validatingItems);
+
         $newData = $request->all();
 
         $newComic = new Comic();
@@ -91,6 +105,9 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+
+        $validateData = $request->validate($this->validatingItems);
+
         $updateData = $request;
 
         $comic->name = $request["name"];
@@ -119,5 +136,9 @@ class ComicController extends Controller
     public function destroy(Comic $comic)
     {
         //
+
+        $comic->delete();
+
+        return redirect()->route("comics.index")->with("status", "'$comic->name' deleted!");
     }
 }

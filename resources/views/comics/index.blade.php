@@ -7,6 +7,11 @@
 @section('content')
 <main>
     <div class="container">
+        @if (session("status"))
+            <div class="alert alert-success">
+              {{ session("status") }}
+            </div>
+        @endif
         <table class="table table-light">
             <thead>
               <tr>
@@ -16,7 +21,7 @@
                 <th scope="col">Editor</th>
                 <th scope="col">Price</th>
                 <th scope="col">Thumb</th>
-                <th scope="col">Info</th>
+                <th colspan=3 scope="col">Action</th>
               </tr>
             </thead>
 
@@ -32,7 +37,16 @@
                         <td style="width: 30px"><img class="img-fluid" src="{{$comic->thumb}}" alt="{{$comic->name}}"></td>
                         <td>
                           <a class="btn btn-primary" href="{{route("comics.show", $comic)}}">More Info</a>
+                        </td>
+                        <td>
                           <a class="btn btn-success" href="{{route("comics.edit", $comic)}}">Edit</a>
+                        </td>
+                        <td>
+                          <form action="{{route('comics.destroy', $comic)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                          </form>
                         </td>
                     </tr>
                 </tbody>
